@@ -1,0 +1,33 @@
+# Spring cloud를 통해 변경이 안될 요소들을 저장한다.
+spring:
+  application:
+    name: zuul-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-service
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+#      defaultZone: http://localhost:8761/eureka/,http://127.0.0.1:8762/eureka
+    enabled: true
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: 100  # Hystrix Thread Pool default size
+      maximumSize: 500  # Hystrix Thread Pool default size
+      keepAliveTimeMinutes: 1
+      allowMaximumSizeToDivergeFromCoreSize: true
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1800000     #설정 시간동안 처리 지연발생시 timeout and 설정한 fallback 로직 수행
+      circuitBreaker:
+        requestVolumeThreshold: 2            #설정수 만큼 처리가 지연될시 circuit open
+        errorThresholdPercentage: 50
+        enabled: true

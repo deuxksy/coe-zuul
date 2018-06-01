@@ -1,0 +1,14 @@
+# Spring cloud를 통해 변경이 가능한 요소들을 정의한다.
+server:
+  port: 17001
+zuul:
+  ignoredServices: '*'
+  routes:
+    customer:
+      path: /api/v1/customers/**
+      serviceId: CUSTOMER-SERVICE
+      strip-prefix: false
+    order:
+      path: /api/v1/orders/**
+      serviceId: ORDER-SERVICE
+      strip-prefix: false
