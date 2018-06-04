@@ -3,10 +3,14 @@ spring:
   application:
     name: zuul-service
   cloud:
-    config:
-      discovery:
+    loadbalancer:
+      retry:
         enabled: true
-        service-id: config-service
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: config-service
 eureka:
   client:
     serviceUrl:
@@ -26,8 +30,26 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 1800000     #설정 시간동안 처리 지연발생시 timeout and 설정한 fallback 로직 수행
+            timeoutInMilliseconds: 15000     # 설정 시간동안 처리 지연발생시 timeout and 설정한 fallback 로직 수행. default value= 1000
+                                            # timeoutInMilliseconds > ( ribbon.ConnectTimeout + ribbon.ReadTimeout ) * ( ribbon.maxAutoRetries + 1 )
       circuitBreaker:
-        requestVolumeThreshold: 2            #설정수 만큼 처리가 지연될시 circuit open
+        requestVolumeThreshold: 2            # 설정수 만큼 처리가 지연될시 circuit open
         errorThresholdPercentage: 50
-        enabled: true
+        enabled: false
+# hystrix property 상세 설정 가이드 : https://github.com/Netflix/Hystrix/wiki/Configuration#executionisolationthreadtimeoutinmilliseconds
+
+
+ribbon:
+  ConnectTimeout: 5000    # Client에서 서버로 요청시 서버와의 Connection 맺기 까지의 delay time
+  ReadTimeout: 2000       # Connection 맺은 후 response 받기 까지 delay time
+#  SocketTimeout: 500     # Response 데이터의 packet 들을 받을 때 서로 다른 패킷을 받기 까지의 delay time (참고: http://tomining.tistory.com/164)
+  maxAutoRetries: 2             # ???? Max number of retries on the same server (excluding the first try), default 0
+#TODO: 추가로 의미 확인 필요  MaxAutoRetriesNextServer: 2   # Max number of next servers to retry (excluding the first server), default 1
+#  ServerListRefreshInterval: 5000  # Interval to refresh the server list from the source
+#TODO: 추가로 의미 확인 필요  OkToRetryOnAllOperations: true # ???? Whether all operations can be retried for this client
+#  eureka:
+#    enabled: true                # default = true, ??eureka에서 endpoints리스트를 받아다 가지고 있을수 있다??
+#  maxConnectionsPerHost: 300     # 하나의 backend서비스에 연결 가능한 최대 connection 수
+#  maxTotalConnections: 1200      # backend에 연결 가능한 최대 connection 수
+
+
