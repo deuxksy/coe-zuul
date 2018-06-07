@@ -24,6 +24,10 @@ public class CoeZuulApplication {
     @Autowired
     ServerProperties serverProperties;
 
+    public static void main(String[] args) {
+        SpringApplication.run(CoeZuulApplication.class, args);
+    }
+
     @Bean
     public FallbackProvider zuulFallbackProvider() {
         return new ZuulFallbackProvider();
@@ -37,9 +41,5 @@ public class CoeZuulApplication {
     @Bean
     public CoeRouterLocator coeRouterLocator() {
         return new CoeRouterLocator(serverProperties.getServlet().getServletPrefix(), zuulProperties);
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(CoeZuulApplication.class, args);
     }
 }
