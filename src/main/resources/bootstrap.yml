@@ -14,8 +14,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-#      defaultZone: http://localhost:8761/eureka/,http://127.0.0.1:8762/eureka
+      defaultZone: http://10.71.174.22:7071/eureka/,http://127.0.0.1:8762/eureka
     enabled: true
 
 hystrix:
