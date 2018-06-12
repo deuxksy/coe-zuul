@@ -6,16 +6,10 @@ spring:
     loadbalancer:
       retry:
         enabled: true
-#  cloud:
-#    config:
-#      discovery:
-#        enabled: true
-#        service-id: config-service
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://10.71.174.22:7071/eureka/,http://127.0.0.1:8762/eureka
-    enabled: true
+    config:
+      discovery:
+        enabled: true
+        service-id: config-service
 
 hystrix:
   threadpool:
@@ -51,4 +45,20 @@ ribbon:
 #  maxConnectionsPerHost: 300     # 하나의 backend서비스에 연결 가능한 최대 connection 수
 #  maxTotalConnections: 1200      # backend에 연결 가능한 최대 connection 수
 
-
+---
+spring:
+  profiles: zuul1
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.71.172.22:7071/eureka/,http://10.71.174.22:7071/eureka
+    enabled: true
+---
+spring:
+  profiles: zuul2
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.71.174.22:7071/eureka/,http://10.71.172.22:7071/eureka
+    enabled: true
+---

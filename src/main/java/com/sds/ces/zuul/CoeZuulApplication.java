@@ -1,8 +1,8 @@
-package com.example.coezuul;
+package com.sds.ces.zuul;
 
-import com.example.coezuul.filter.SimpleFilter;
-import com.example.coezuul.locator.CoeRouterLocator;
-import com.example.coezuul.provider.ZuulFallbackProvider;
+import com.sds.ces.zuul.filter.SimpleFilter;
+import com.sds.ces.zuul.locator.CoeRouterLocator;
+import com.sds.ces.zuul.provider.ZuulFallbackProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

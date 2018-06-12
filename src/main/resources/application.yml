@@ -5,15 +5,15 @@ zuul:
   ignoredServices: '*'
   sensitive-headers:
 
-  routes:
-    customer:
-      path: /api/v1/customers/**
-      serviceId: CUSTOMER-SERVICE
-      strip-prefix: false
-    order:
-      path: /api/v1/orders/**
-      serviceId: ORDER-SERVICE
-      strip-prefix: false
+#  routes:
+#    customer:
+#      path: /api/v1/customers/**
+#      serviceId: CUSTOMER-SERVICE
+#      strip-prefix: false
+#    order:
+#      path: /api/v1/orders/**
+#      serviceId: ORDER-SERVICE
+#      strip-prefix: false
 
   retryable: true
 
