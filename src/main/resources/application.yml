@@ -1,10 +1,12 @@
 # Spring cloud를 통해 변경이 가능한 요소들을 정의한다.
 server:
-  port: 7073
+  port: ${PORT:7073}
+spring:
+  application:
+    name: zuul-server
 zuul:
   ignoredServices: '*'
   sensitive-headers:
-
 #  routes:
 #    customer:
 #      path: /api/v1/customers/**
@@ -14,14 +16,4 @@ zuul:
 #      path: /api/v1/orders/**
 #      serviceId: ORDER-SERVICE
 #      strip-prefix: false
-
   retryable: true
-
-#zuul.host.maxTotalConnections : backend에 연결할 수 있는 최대 connection 갯수, 기본 200 -> eureka를 사용하지 않을시 적용됨
-#zuul.host.maxPerRouteConnections : route 별 최대 connection 갯수, 기본 20 -> eureka를 사용하지 않을 시 적용됨
-#zuul.host.socketTimeoutMillis
-#zuul.host.connectTimeoutMillis
-#zuul.ribbonIsolationStrategy : Hystrix의 isolation 방식 - 기본은 SEMAPHORE
-#zuul.retryable : true인 경우 Ribbon client의 설정대로, 요청이 실패시 재시도
-#zuul.addProxyHeaders : true인 경우, X-Forwarded-Host 헤더가 추가됨
-# 출처: https://supawer0728.github.io/2018/03/11/Spring-Cloud-Zuul/
