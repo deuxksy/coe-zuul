@@ -13,7 +13,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_SERVER_URL:http://10.71.172.22}:${EUREKA_SERVER_PORT:7071}/eureka/
+      defaultZone: ${EUREKA_SERVER_URL:http://10.71.171.22}:${EUREKA_SERVER_PORT:7075}/eureka/
     enabled: true
 hystrix:
   threadpool:
