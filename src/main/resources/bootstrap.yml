@@ -43,7 +43,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA1_SERVER_URL:stage-zuul2}:${EUREKA1_SERVER_PORT:8761}/eureka/,${EUREKA2_SERVER_URL:stage-zuul1}:${EUREKA2_SERVER_PORT:8761}/eureka/
+      defaultZone: ${EUREKA1_SERVER_URL:stage-eureka1}:${EUREKA1_SERVER_PORT:8761}/eureka/,${EUREKA2_SERVER_URL:stage-eureka2}:${EUREKA2_SERVER_PORT:8761}/eureka/
     enabled: true
 ---
 spring:
@@ -51,6 +51,6 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA1_SERVER_URL:stage-zuul1}:${EUREKA1_SERVER_PORT:8761}/eureka/,${EUREKA2_SERVER_URL:stage-zuul2}:${EUREKA2_SERVER_PORT:8761}/eureka/
+      defaultZone: ${EUREKA1_SERVER_URL:stage-eureka2}:${EUREKA1_SERVER_PORT:8761}/eureka/,${EUREKA2_SERVER_URL:stage-eureka1}:${EUREKA2_SERVER_PORT:8761}/eureka/
     enabled: true
 ---
