@@ -13,7 +13,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_SERVER_URL:http://10.71.171.22}:${EUREKA_SERVER_PORT:7075}/eureka/
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost}:${EUREKA_SERVER_PORT:8761}/eureka/
     enabled: true
 hystrix:
   threadpool:
@@ -43,7 +43,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA1_SERVER_URL:http://10.71.172.22}:${EUREKA1_SERVER_PORT:7071}/eureka/,${EUREKA2_SERVER_URL:http://10.71.174.22}:${EUREKA2_SERVER_PORT:7071}/eureka/
+      defaultZone: ${EUREKA1_SERVER_URL:stage-zuul2}:${EUREKA1_SERVER_PORT:8761}/eureka/,${EUREKA2_SERVER_URL:stage-zuul1}:${EUREKA2_SERVER_PORT:8761}/eureka/
     enabled: true
 ---
 spring:
@@ -51,6 +51,6 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA1_SERVER_URL:http://10.71.174.22}:${EUREKA1_SERVER_PORT:7071}/eureka/,${EUREKA2_SERVER_URL:http://10.71.172.22}:${EUREKA2_SERVER_PORT:7071}/eureka/
+      defaultZone: ${EUREKA1_SERVER_URL:stage-zuul1}:${EUREKA1_SERVER_PORT:8761}/eureka/,${EUREKA2_SERVER_URL:stage-zuul2}:${EUREKA2_SERVER_PORT:8761}/eureka/
     enabled: true
 ---
