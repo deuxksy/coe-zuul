@@ -1,4 +1,4 @@
-package com.sds.ces.zuul;
+package com.sds.act.coe.zuul;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.sds.ces.zuul.config;
+package com.sds.act.coe.zuul.config;
 
 import com.netflix.appinfo.AmazonInfo;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +14,8 @@ public class EurekaConfig {
     @Value("${server.port}")
     private int port;
 
+
+    // THIS BEAN IS USED IN ONLY AWS
     @Bean
     @Profile("!local")
     public EurekaInstanceConfigBean eurekaInstanceConfigBean(InetUtils inetUtils) {

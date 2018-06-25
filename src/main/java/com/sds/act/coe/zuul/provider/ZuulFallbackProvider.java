@@ -1,8 +1,8 @@
-package com.sds.ces.zuul.provider;
+package com.sds.act.coe.zuul.provider;
 
-import com.sds.ces.zuul.vo.ErrorResponseBodyVO;
 import com.netflix.hystrix.exception.HystrixTimeoutException;
 import com.netflix.zuul.context.RequestContext;
+import com.sds.act.coe.zuul.vo.ErrorResponseBodyVO;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
