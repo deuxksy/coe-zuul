@@ -1,13 +1,14 @@
-package com.example.coezuul;
+package com.sds.ces.zuul;
 
-import com.example.coezuul.filter.SimpleFilter;
-import com.example.coezuul.locator.CoeRouterLocator;
-import com.example.coezuul.provider.ZuulFallbackProvider;
+import com.sds.ces.zuul.filter.SimpleFilter;
+import com.sds.ces.zuul.locator.CoeRouterLocator;
+import com.sds.ces.zuul.provider.ZuulFallbackProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 
 @EnableDiscoveryClient
 @EnableZuulProxy
+@EnableHystrix
 @SpringBootApplication
 public class CoeZuulApplication {
 

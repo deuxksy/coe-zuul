@@ -1,4 +1,4 @@
-package com.example.coezuul.locator;
+package com.sds.ces.zuul.locator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

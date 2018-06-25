@@ -1,4 +1,4 @@
-package com.example.coezuul.filter;
+package com.sds.ces.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;

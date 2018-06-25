@@ -1,0 +1,80 @@
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Spring cloud를 통해 변경이 가능한 요소들을 정의한다.
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+spring:
+  application:
+    name: zuul-server-local
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Hystrix Options
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+#      coreSize:  Hystrix Thread Pool default size is 100
+#      maximumSize: Hystrix Thread Pool default size is 500
+#
+#
+#  timeoutInMilliseconds: 설정 시간동안 처리 지연발생시 timeout and 설정한 fallback 로직 수행.
+#                         default value= 1000 timeoutInMilliseconds > ( ribbon.ConnectTimeout + ribbon.ReadTimeout ) * ( ribbon.maxAutoRetries + 1 )
+#                         hystrix property 상세 설정 가이드 - https://github.com/Netflix/Hystrix/wiki/Configuration#executionisolationthreadtimeoutinmilliseconds
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: 100
+      maximumSize: 500
+      keepAliveTimeMinutes: 1
+      allowMaximumSizeToDivergeFromCoreSize: true
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 15000
+      circuitBreaker:
+        requestVolumeThreshold: 2                     # 설정수 만큼 처리가 지연될시 circuit open
+        errorThresholdPercentage: 50
+        enabled: false
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Endpoint output options for Hystrix Stream
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Ribbon Options
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ConnectTimeout: Client에서 서버로 요청시 서버와의 Connection 맺기 까지의 delay time
+# ReadTimeout : Connection 맺은 후 response 받기 까지 delay time
+# MaxAutoRetries : Max number of retries on the same server (excluding the first try), default 0
+
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 2000
+  maxAutoRetries: 2
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ZUUL ROUTING INFO DEFINE
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+zuul:
+  ignoredServices: '*'
+  sensitive-headers:
+  routes:
+    customer:
+      path: /api/v1/customers/**
+      serviceId: CUSTOMER-SERVICE
+      strip-prefix: false
+    order:
+      path: /api/v1/orders/**
+      serviceId: ORDER-SERVICE
+      strip-prefix: false
+  retryable: true
+  host:
+    connect-timeout-millis: 6000
+    socket-timeout-millis: 6000

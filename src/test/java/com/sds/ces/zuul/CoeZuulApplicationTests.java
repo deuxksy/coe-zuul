@@ -1,4 +1,4 @@
-package com.example.coezuul;
+package com.sds.ces.zuul;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

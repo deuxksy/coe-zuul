@@ -1,6 +1,6 @@
-package com.example.coezuul.provider;
+package com.sds.ces.zuul.provider;
 
-import com.example.coezuul.vo.ErrorResponseBodyVO;
+import com.sds.ces.zuul.vo.ErrorResponseBodyVO;
 import com.netflix.hystrix.exception.HystrixTimeoutException;
 import com.netflix.zuul.context.RequestContext;
 import org.apache.commons.lang3.exception.ExceptionUtils;

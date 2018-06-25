@@ -1,4 +1,4 @@
-package com.example.coezuul.vo;
+package com.sds.ces.zuul.vo;
 
 public class ErrorResponseBodyVO {
     private String code;
