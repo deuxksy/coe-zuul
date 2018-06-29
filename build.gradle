@@ -38,6 +38,14 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-sleuth')
     compile('org.springframework.cloud:spring-cloud-config-client')
     compile('org.apache.commons:commons-lang3:3.4')
+
+    //Swagger Aggregate
+    compile('io.springfox:springfox-swagger-ui:2.9.2')
+    compile('io.springfox:springfox-swagger2:2.9.2')
+
+    //Lombok
+    compileOnly('org.projectlombok:lombok:1.18.0')
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 

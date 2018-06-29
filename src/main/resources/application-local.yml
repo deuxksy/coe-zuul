@@ -69,16 +69,17 @@ zuul:
   routes:
     customer:
       path: /api/v1/customers/**
-      serviceId: CUSTOMER-SERVICE
+      serviceId: CUSTOMER-SERVICE-LOCAL
       strip-prefix: false
     order:
       path: /api/v1/orders/**
-      serviceId: ORDER-SERVICE
+      serviceId: ORDER-SERVICE-LOCAL
       strip-prefix: false
     email:
       path: /api/v1/emails/**
-      serviceId: EMAIL-SERVICE
+      serviceId: EMAIL-SERVICE-LOCAL
       strip-prefix: false
+
   retryable: true
   host:
     connect-timeout-millis: 6000
