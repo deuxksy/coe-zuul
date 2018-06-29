@@ -5,15 +5,19 @@ import com.netflix.zuul.context.RequestContext;
 import com.sds.act.coe.zuul.vo.ErrorResponseBodyVO;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+@RefreshScope
+@Component
 public class ZuulFallbackProvider implements FallbackProvider {
     private static final String SERVICE_ID = "serviceId";
     private static final String REQUEST_URI = "requestURI";
