@@ -36,7 +36,7 @@ public class ZuulFallbackProvider implements FallbackProvider {
         if (cause instanceof HystrixTimeoutException) {
             return response(HttpStatus.GATEWAY_TIMEOUT, getInvalidParam(cause), getRootCauseMsg(cause));
         } else {
-            return response(HttpStatus.INTERNAL_SERVER_ERROR, getInvalidParam(cause), getRootCauseMsg(cause));
+            return response(HttpStatus.SERVICE_UNAVAILABLE, getInvalidParam(cause), getRootCauseMsg(cause));
         }
     }
 
@@ -69,7 +69,7 @@ public class ZuulFallbackProvider implements FallbackProvider {
 
                 if (status == HttpStatus.GATEWAY_TIMEOUT) {
                     responseBodyVO = new ErrorResponseBodyVO("Error", "Failed to handle the request in given thread time. (" + rootCauseMsg + ")", invalidParam);
-                } else if (status == HttpStatus.INTERNAL_SERVER_ERROR) {
+                } else if (status == HttpStatus.SERVICE_UNAVAILABLE) {
                     responseBodyVO = new ErrorResponseBodyVO("Error", "Service Unavailable. Please try after sometime. (" + rootCauseMsg + ")", invalidParam);
                 } else {
                     responseBodyVO = new ErrorResponseBodyVO();
